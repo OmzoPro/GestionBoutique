@@ -1,4 +1,4 @@
-package sn.groupe1.ecommerce;
+package sn.pro.gestionquincaillerie;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
