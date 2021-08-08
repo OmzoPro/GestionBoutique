@@ -40,7 +40,7 @@ public class ProduitController {
 	
 	//Methode pour afficher une Produit par son id
 	@GetMapping(path = "produitById")
-	public Optional<Produit> ProduitByID(@PathVariable("id") Long id) {
+	public Optional<Produit> produitByID(@PathVariable("id") Long id) {
 		return produitRepository.findById(id);
 		
 	}
