@@ -4,11 +4,13 @@
 package sn.pro.gestionquincaillerie.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author omarndiaye
@@ -25,6 +27,8 @@ public class Categorie implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCategorie;
 	private String libelle;
+	@OneToMany
+	private List<Categorie> categories;
 
 	/**
 	 * 
@@ -33,11 +37,39 @@ public class Categorie implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
+	public Categorie(Long idCategorie, String libelle, List<Categorie> categories) {
+		super();
+		this.idCategorie = idCategorie;
+		this.libelle = libelle;
+		this.categories = categories;
+	}
+
+
+
 	public Categorie(Long idCategorie, String libelle) {
 		super();
 		this.idCategorie = idCategorie;
 		this.libelle = libelle;
 	}
+
+
+
+	public Categorie(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
+
+
+
+	public Categorie(String libelle, List<Categorie> categories) {
+		super();
+		this.libelle = libelle;
+		this.categories = categories;
+	}
+
+
 
 	public Long getIdCategorie() {
 		return idCategorie;
@@ -53,6 +85,18 @@ public class Categorie implements Serializable{
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+
+
+
+	public List<Categorie> getCategories() {
+		return categories;
+	}
+
+
+
+	public void setCategories(List<Categorie> categories) {
+		this.categories = categories;
 	}
 	
 

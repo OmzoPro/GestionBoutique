@@ -27,7 +27,6 @@ public class User implements Serializable{
 	private String login;
 	private String pasword;
 	private String role;
-	
 
 	/**
 	 * 

@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * @author omarndiaye
@@ -23,7 +25,13 @@ public class Vente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idVente;
+	@ManyToOne
+	@JoinColumn(name = "matriculeProduit")
+	private Produit produit;
 	private Integer qteVendu;
+	@ManyToOne
+	@JoinColumn(name = "idGerant")
+	private Gerant gerant;
 	private String dateOperation;
 
 	/**
@@ -33,10 +41,20 @@ public class Vente implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Vente(Long idVente, Integer qteVendu, String dateOperation) {
+	public Vente(Long idVente, Produit produit, Integer qteVendu, Gerant gerant, String dateOperation) {
 		super();
 		this.idVente = idVente;
+		this.produit = produit;
 		this.qteVendu = qteVendu;
+		this.gerant = gerant;
+		this.dateOperation = dateOperation;
+	}
+
+	public Vente(Produit produit, Integer qteVendu, Gerant gerant, String dateOperation) {
+		super();
+		this.produit = produit;
+		this.qteVendu = qteVendu;
+		this.gerant = gerant;
 		this.dateOperation = dateOperation;
 	}
 
@@ -63,6 +81,22 @@ public class Vente implements Serializable {
 	public void setDateOperation(String dateOperation) {
 		this.dateOperation = dateOperation;
 	}
-	
+
+	public Produit getProduit() {
+		return produit;
+	}
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+
+	public Gerant getGerant() {
+		return gerant;
+	}
+
+	public void setGerant(Gerant gerant) {
+		this.gerant = gerant;
+	}
+
 
 }

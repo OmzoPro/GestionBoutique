@@ -4,11 +4,13 @@
 package sn.pro.gestionquincaillerie.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author omarndiaye
@@ -27,6 +29,8 @@ public class Fournisseur implements Serializable {
 	private String nomFournisseur;
 	private String adresseFournisseur;
 	private Integer telephoneFournisseur;
+	@OneToMany
+	private List<Produit> produits;
 
 	/**
 	 * 
@@ -34,6 +38,7 @@ public class Fournisseur implements Serializable {
 	public Fournisseur() {
 		// TODO Auto-generated constructor stub
 	}
+
 
 	public Fournisseur(Long idFournisseur, String nomFournisseur, String adresseFournisseur,
 			Integer telephoneFournisseur) {
@@ -44,12 +49,35 @@ public class Fournisseur implements Serializable {
 		this.telephoneFournisseur = telephoneFournisseur;
 	}
 
+
 	public Fournisseur(String nomFournisseur, String adresseFournisseur, Integer telephoneFournisseur) {
 		super();
 		this.nomFournisseur = nomFournisseur;
 		this.adresseFournisseur = adresseFournisseur;
 		this.telephoneFournisseur = telephoneFournisseur;
 	}
+
+
+	public Fournisseur(String nomFournisseur, String adresseFournisseur, Integer telephoneFournisseur,
+			List<Produit> produits) {
+		super();
+		this.nomFournisseur = nomFournisseur;
+		this.adresseFournisseur = adresseFournisseur;
+		this.telephoneFournisseur = telephoneFournisseur;
+		this.produits = produits;
+	}
+
+
+	public Fournisseur(Long idFournisseur, String nomFournisseur, String adresseFournisseur,
+			Integer telephoneFournisseur, List<Produit> produits) {
+		super();
+		this.idFournisseur = idFournisseur;
+		this.nomFournisseur = nomFournisseur;
+		this.adresseFournisseur = adresseFournisseur;
+		this.telephoneFournisseur = telephoneFournisseur;
+		this.produits = produits;
+	}
+
 
 	public Long getIdFournisseur() {
 		return idFournisseur;
@@ -81,6 +109,16 @@ public class Fournisseur implements Serializable {
 
 	public void setTelephoneFournisseur(Integer telephoneFournisseur) {
 		this.telephoneFournisseur = telephoneFournisseur;
+	}
+
+
+	public List<Produit> getProduits() {
+		return produits;
+	}
+
+
+	public void setProduits(List<Produit> produits) {
+		this.produits = produits;
 	}
 	
 

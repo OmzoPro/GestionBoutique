@@ -4,11 +4,15 @@
 package sn.pro.gestionquincaillerie.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * @author omarndiaye
@@ -29,16 +33,27 @@ public class Produit implements Serializable{
 	private Integer prix;
 	private String matriculeProduit;
 	private String dateFourni;
-
-	/**
-	 * 
-	 */
+	@ManyToOne
+	@JoinColumn(name = "idCategorie")
+	private Categorie categorie;
+	@ManyToOne
+	@JoinColumn(name = "idBoutique")
+	private Boutique boutique;
+	@ManyToOne
+	@JoinColumn(name = "idFournisseur")
+	private Fournisseur fournisseur;
+	
+	@OneToMany
+	private List<Vente> ventes;
+	
 	public Produit() {
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	public Produit(Long idProduit, String nomProduit, String descriptionProduit, Integer qteProduit, Integer prix,
-			String matriculeProduit, String dateFourni) {
+			String matriculeProduit, String dateFourni, Categorie categorie, Boutique boutique, Fournisseur fournisseur,
+			List<Vente> ventes) {
 		super();
 		this.idProduit = idProduit;
 		this.nomProduit = nomProduit;
@@ -47,7 +62,62 @@ public class Produit implements Serializable{
 		this.prix = prix;
 		this.matriculeProduit = matriculeProduit;
 		this.dateFourni = dateFourni;
+		this.categorie = categorie;
+		this.boutique = boutique;
+		this.fournisseur = fournisseur;
+		this.ventes = ventes;
 	}
+
+
+	public Produit(Long idProduit, String nomProduit, String descriptionProduit, Integer qteProduit, Integer prix,
+			String matriculeProduit, String dateFourni, Categorie categorie, Boutique boutique,
+			Fournisseur fournisseur) {
+		super();
+		this.idProduit = idProduit;
+		this.nomProduit = nomProduit;
+		this.descriptionProduit = descriptionProduit;
+		this.qteProduit = qteProduit;
+		this.prix = prix;
+		this.matriculeProduit = matriculeProduit;
+		this.dateFourni = dateFourni;
+		this.categorie = categorie;
+		this.boutique = boutique;
+		this.fournisseur = fournisseur;
+	}
+
+
+	public Produit(String nomProduit, String descriptionProduit, Integer qteProduit, Integer prix,
+			String matriculeProduit, String dateFourni, Categorie categorie, Boutique boutique, Fournisseur fournisseur,
+			List<Vente> ventes) {
+		super();
+		this.nomProduit = nomProduit;
+		this.descriptionProduit = descriptionProduit;
+		this.qteProduit = qteProduit;
+		this.prix = prix;
+		this.matriculeProduit = matriculeProduit;
+		this.dateFourni = dateFourni;
+		this.categorie = categorie;
+		this.boutique = boutique;
+		this.fournisseur = fournisseur;
+		this.ventes = ventes;
+	}
+
+
+	public Produit(String nomProduit, String descriptionProduit, Integer qteProduit, Integer prix,
+			String matriculeProduit, String dateFourni, Categorie categorie, Boutique boutique,
+			Fournisseur fournisseur) {
+		super();
+		this.nomProduit = nomProduit;
+		this.descriptionProduit = descriptionProduit;
+		this.qteProduit = qteProduit;
+		this.prix = prix;
+		this.matriculeProduit = matriculeProduit;
+		this.dateFourni = dateFourni;
+		this.categorie = categorie;
+		this.boutique = boutique;
+		this.fournisseur = fournisseur;
+	}
+
 
 	public Long getIdProduit() {
 		return idProduit;
@@ -103,6 +173,38 @@ public class Produit implements Serializable{
 
 	public void setDateFourni(String dateFourni) {
 		this.dateFourni = dateFourni;
+	}
+	public Categorie getCategorie() {
+		return categorie;
+	}
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+	public Boutique getBoutique() {
+		return boutique;
+	}
+	public void setBoutique(Boutique boutique) {
+		this.boutique = boutique;
+	}
+
+
+	public Fournisseur getFournisseur() {
+		return fournisseur;
+	}
+
+
+	public void setFournisseur(Fournisseur fournisseur) {
+		this.fournisseur = fournisseur;
+	}
+
+
+	public List<Vente> getVentes() {
+		return ventes;
+	}
+
+
+	public void setVentes(List<Vente> ventes) {
+		this.ventes = ventes;
 	}
 	
 
