@@ -11,12 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * @author omarndiaye
  *
  */
-@Entity(name = "vente")
+@Entity
+@Table(name = "vente")
 public class Vente implements Serializable {
 	/**
 	 * 
@@ -29,9 +31,7 @@ public class Vente implements Serializable {
 	@JoinColumn(name = "matriculeProduit")
 	private Produit produit;
 	private Integer qteVendu;
-	@ManyToOne
-	@JoinColumn(name = "idGerant")
-	private Gerant gerant;
+	private Integer totale;
 	private String dateOperation;
 
 	/**
@@ -41,22 +41,23 @@ public class Vente implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Vente(Long idVente, Produit produit, Integer qteVendu, Gerant gerant, String dateOperation) {
+	public Vente(Long idVente, Produit produit, Integer qteVendu, Integer totale, String dateOperation) {
 		super();
 		this.idVente = idVente;
 		this.produit = produit;
 		this.qteVendu = qteVendu;
-		this.gerant = gerant;
+		this.totale = totale;
 		this.dateOperation = dateOperation;
 	}
 
-	public Vente(Produit produit, Integer qteVendu, Gerant gerant, String dateOperation) {
+	public Vente(Produit produit, Integer qteVendu, Integer totale, String dateOperation) {
 		super();
 		this.produit = produit;
 		this.qteVendu = qteVendu;
-		this.gerant = gerant;
+		this.totale = totale;
 		this.dateOperation = dateOperation;
 	}
+
 
 	public Long getIdVente() {
 		return idVente;
@@ -90,13 +91,14 @@ public class Vente implements Serializable {
 		this.produit = produit;
 	}
 
-	public Gerant getGerant() {
-		return gerant;
+	public Integer getTotale() {
+		return totale;
 	}
 
-	public void setGerant(Gerant gerant) {
-		this.gerant = gerant;
+	public void setTotale(Integer totale) {
+		this.totale = totale;
 	}
+
 
 
 }

@@ -35,9 +35,9 @@ public class Gerant implements Serializable{
 	private Integer telephoneGerant;
 	private Integer idUser;
 	
-	//pour recuperer facilement la liste des ventes de ce gerant, on fait une relation bidirectionnel
-	@OneToMany
-	private List<Vente> ventes;
+	//pour recuperer facilement la liste des factures de ce gerant, on fait une relation bidirectionnel
+	@OneToMany(mappedBy = "gerant")
+	private List<Facture> factures ;
 	
 	public Gerant() {
 		// TODO Auto-generated constructor stub
@@ -46,7 +46,7 @@ public class Gerant implements Serializable{
 	
 
 	public Gerant(Long idGerant, String nomGerant, String prenomGerant, String adresseGerant, Integer telephoneGerant,
-			Integer idUser, List<Vente> ventes) {
+			Integer idUser, List<Facture> factures) {
 		super();
 		this.idGerant = idGerant;
 		this.nomGerant = nomGerant;
@@ -54,22 +54,21 @@ public class Gerant implements Serializable{
 		this.adresseGerant = adresseGerant;
 		this.telephoneGerant = telephoneGerant;
 		this.idUser = idUser;
-		this.ventes = ventes;
+		this.factures = factures;
 	}
 
 
 
 	public Gerant(String nomGerant, String prenomGerant, String adresseGerant, Integer telephoneGerant, Integer idUser,
-			List<Vente> ventes) {
+			List<Facture> factures) {
 		super();
 		this.nomGerant = nomGerant;
 		this.prenomGerant = prenomGerant;
 		this.adresseGerant = adresseGerant;
 		this.telephoneGerant = telephoneGerant;
 		this.idUser = idUser;
-		this.ventes = ventes;
+		this.factures = factures;
 	}
-
 
 
 	public Gerant(String nomGerant, String prenomGerant, String adresseGerant, Integer telephoneGerant,
@@ -145,16 +144,13 @@ public class Gerant implements Serializable{
 		this.idUser = idUser;
 	}
 
-
-
-	public List<Vente> getVentes() {
-		return ventes;
+	public List<Facture> getVentes() {
+		return factures;
 	}
 
 
-
-	public void setVentes(List<Vente> ventes) {
-		this.ventes = ventes;
+	public void setVentes(List<Facture> factures) {
+		this.factures = factures;
 	}
 	
 
